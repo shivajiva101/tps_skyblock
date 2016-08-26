@@ -1,0 +1,3 @@
+[submodule "protect"]
+	path = protect
+	url = https://github.com/Zeg9/minetest-protect/
