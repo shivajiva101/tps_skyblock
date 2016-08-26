@@ -1,3 +1,9 @@
 [submodule "protect"]
 	path = protect
 	url = https://github.com/Zeg9/minetest-protect/
+[submodule "technic"]
+	path = technic
+	url = https://github.com/minetest-technic/technic
+[submodule "farming"]
+	path = farming
+	url = https://github.com/tenplus1/farming
