@@ -13,3 +13,9 @@
 [submodule "biome_lib"]
 	path = biome_lib
 	url = https://github.com/minetest-mods/biome_lib
+[submodule "hudbars"]
+	path = hudbars
+	url = https://github.com/tenplus1/hudbars
+[submodule "signs_lib"]
+	path = signs_lib
+	url = https://github.com/minetest-mods/signs_lib
