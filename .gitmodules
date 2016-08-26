@@ -7,3 +7,9 @@
 [submodule "farming"]
 	path = farming
 	url = https://github.com/tenplus1/farming
+[submodule "pipeworks"]
+	path = pipeworks
+	url = https://github.com/minetest-mods/pipeworks
+[submodule "biome_lib"]
+	path = biome_lib
+	url = https://github.com/minetest-mods/biome_lib
