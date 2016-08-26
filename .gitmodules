@@ -19,3 +19,6 @@
 [submodule "signs_lib"]
 	path = signs_lib
 	url = https://github.com/minetest-mods/signs_lib
+[submodule "3d_armor"]
+	path = 3d_armor
+	url = https://github.com/stujones11/minetest-3d_armor
