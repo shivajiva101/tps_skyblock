@@ -273,23 +273,23 @@ minetest.register_craftitem(protector.item, {
 })
 
 --this recipe is disabled. Enable it if you miss the paucity mod, in which case you also should delete the other recipe.
---minetest.register_craft({
---	output = protector.node .. " 1",
---	recipe = {
---		{"default:stone","default:stone","default:stone"},
---		{"default:stone","default:mese","default:stone"},
---		{"default:stone","default:stone","default:stone"},
---	}
---})
-
 minetest.register_craft({
 	output = protector.node .. " 1",
 	recipe = {
-		{"paucity:protectmoney","paucity:protectmoney","paucity:protectmoney"},
-		{"paucity:protectmoney","paucity:protectmoney","paucity:protectmoney"},
-		{"","",""},
+		{"default:stone","default:stone","default:stone"},
+		{"default:stone","default:mese","default:stone"},
+		{"default:stone","default:stone","default:stone"},
 	}
 })
+
+--minetest.register_craft({
+--	output = protector.node .. " 1",
+--	recipe = {
+--		{"paucity:protectmoney","paucity:protectmoney","paucity:protectmoney"},
+--		{"paucity:protectmoney","paucity:protectmoney","paucity:protectmoney"},
+--		{"","",""},
+--	}
+--})
 
 minetest.register_craft({
 	output = protector.item,
