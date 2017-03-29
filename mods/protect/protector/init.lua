@@ -10,6 +10,7 @@
 minetest.register_privilege("delprotect","Delete other's protection by sneaking")
 
 protector = {}
+protector.radius = (tonumber(minetest.setting_get("protector_radius")) or 3)
 
 protector.node = "protector:protect"
 protector.item = "protector:stick"
@@ -142,9 +143,9 @@ local old_node_dig = minetest.node_dig
 function minetest.node_dig(pos, node, digger)
 	local ok=true
 	if node.name ~= protector.node then
-		ok = protector.can_dig(5,pos,digger)
+		ok = protector.can_dig(protector.radius,pos,digger)
 	else
-		ok = protector.can_dig(5,pos,digger,true)
+		ok = protector.can_dig(protector.radius,pos,digger,true)
 	end
 	if ok == true then
 		old_node_dig(pos, node, digger)
@@ -157,10 +158,10 @@ function minetest.item_place(itemstack, placer, pointed_thing)
 		local ok=true
 		if itemstack:get_name() ~= protector.node then
 			local pos = pointed_thing.above
-			ok = protector.can_dig(5,pos,placer)
+			ok = protector.can_dig(protector.radius,pos,placer)
 		else
 			local pos = pointed_thing.above
-			ok = protector.can_dig(10,pos,placer,true)
+			ok = protector.can_dig(protector.radius*2,pos,placer,true)
 		end 
 		if ok == true then
 			return old_node_place(itemstack, placer, pointed_thing)
@@ -267,18 +268,29 @@ minetest.register_craftitem(protector.item, {
 		if pointed_thing.type ~= "node" then
 			return
 		end
-		protector.can_dig(5,pointed_thing.under,user,false,2)
+		protector.can_dig(protector.radius,pointed_thing.under,user,false,2)
 	end,
 })
 
+--this recipe is disabled. Enable it if you miss the paucity mod, in which case you also should delete the other recipe.
+--minetest.register_craft({
+--	output = protector.node .. " 1",
+--	recipe = {
+--		{"default:stone","default:stone","default:stone"},
+--		{"default:stone","default:mese","default:stone"},
+--		{"default:stone","default:stone","default:stone"},
+--	}
+--})
+
 minetest.register_craft({
-	output = protector.node .. " 4",
+	output = protector.node .. " 1",
 	recipe = {
-		{"default:stone","default:stone","default:stone"},
-		{"default:stone","default:steel_ingot","default:stone"},
-		{"default:stone","default:stone","default:stone"},
+		{"paucity:protectmoney","paucity:protectmoney","paucity:protectmoney"},
+		{"paucity:protectmoney","paucity:protectmoney","paucity:protectmoney"},
+		{"","",""},
 	}
 })
+
 minetest.register_craft({
 	output = protector.item,
 	recipe = {
@@ -304,6 +316,7 @@ minetest.register_entity("protector:display", {
 -- Display-zone node.
 -- Do NOT place the display as a node
 -- it is made to be used as an entity (see above)
+local x = protector.radius
 minetest.register_node("protector:display_node", {
 	tiles = {"protector_display.png"},
 	use_texture_alpha = true,
@@ -313,14 +326,14 @@ minetest.register_node("protector:display_node", {
 		type = "fixed",
 		fixed = {
 			-- sides
-			{-5.55, -5.55, -5.55, -5.45, 5.55, 5.55},
-			{-5.55, -5.55, 5.45, 5.55, 5.55, 5.55},
-			{5.45, -5.55, -5.55, 5.55, 5.55, 5.55},
-			{-5.55, -5.55, -5.55, 5.55, 5.55, -5.45},
+			{-(x+.55), -(x+.55), -(x+.55), -(x+.45), (x+.55), (x+.55)},
+			{-(x+.55), -(x+.55), (x+.45), (x+.55), (x+.55), (x+.55)},
+			{(x+.45), -(x+.55), -(x+.55), (x+.55), (x+.55), (x+.55)},
+			{-(x+.55), -(x+.55), -(x+.55), (x+.55), (x+.55), -(x+.45)},
 			-- top
-			{-5.55, 5.45, -5.55, 5.55, 5.55, 5.55},
+			{-(x+.55), (x+.45), -(x+.55), (x+.55), (x+.55), (x+.55)},
 			-- bottom
-			{-5.55, -5.55, -5.55, 5.55, -5.45, 5.55},
+			{-(x+.55), -(x+.55), -(x+.55), (x+.55), -(x+.45), (x+.55)},
 			-- middle (surround protector)
 			{-.55,-.55,-.55, .55,.55,.55},
 		},
