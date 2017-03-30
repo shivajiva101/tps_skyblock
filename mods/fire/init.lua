@@ -80,7 +80,7 @@ minetest.register_tool("fire:flint_and_steel", {
 	sound = {breaks = "default_tool_breaks"},
 
 	on_use = function(itemstack, user, pointed_thing)
-		local sound_pos = pointed_thing.above or user:get_pos()
+		local sound_pos = pointed_thing.above or user:getpos()
 		minetest.sound_play(
 			"fire_flint_and_steel",
 			{pos = sound_pos, gain = 0.5, max_hear_distance = 8}
