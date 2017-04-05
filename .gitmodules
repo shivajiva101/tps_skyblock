@@ -1,0 +1,24 @@
+[submodule "protect"]
+	path = protect
+	url = https://github.com/Zeg9/minetest-protect/
+[submodule "technic"]
+	path = technic
+	url = https://github.com/minetest-technic/technic
+[submodule "farming"]
+	path = farming
+	url = https://github.com/tenplus1/farming
+[submodule "pipeworks"]
+	path = pipeworks
+	url = https://github.com/minetest-mods/pipeworks
+[submodule "biome_lib"]
+	path = biome_lib
+	url = https://github.com/minetest-mods/biome_lib
+[submodule "hudbars"]
+	path = hudbars
+	url = https://github.com/tenplus1/hudbars
+[submodule "signs_lib"]
+	path = signs_lib
+	url = https://github.com/minetest-mods/signs_lib
+[submodule "3d_armor"]
+	path = 3d_armor
+	url = https://github.com/stujones11/minetest-3d_armor
