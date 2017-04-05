@@ -451,3 +451,10 @@ function skyblock.feats.load(player_name)
 	file:close()
 	return minetest.deserialize(data)
 end
+
+-- clear cached player data
+function skyblock.feats.clear_cache(player_name)
+	  if players_feat[player_name] then
+	    players_feat[player_name] = nil
+	  end
+end
