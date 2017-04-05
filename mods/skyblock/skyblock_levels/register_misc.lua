@@ -43,6 +43,14 @@ minetest.register_on_dieplayer(function(player)
 	
 end)
 
+-- leave player
+minetest.register_on_leaveplayer(function(player)
+	-- remove player from the cache
+	local player_name = player:get_player_name()
+	skyblock.feats.clear_cache(player_name)
+
+end)
+
 -- player receive fields
 minetest.register_on_player_receive_fields(function(player, formname, fields)
 	-- restart
