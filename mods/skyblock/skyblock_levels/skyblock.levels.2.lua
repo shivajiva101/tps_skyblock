@@ -97,7 +97,7 @@ skyblock.levels[level].feats = {
 		feat = 'place_torch', 
 		count = 8, 
 		reward = 'default:iron_lump',
-		placenode = {'default:torch'},
+		placenode = {'default:torch', 'default:torch_wall', 'default:torch_ceiling'},
 	},
 	{
 		name = 'dig 4 Iron Lumps',
