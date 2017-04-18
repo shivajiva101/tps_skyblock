@@ -140,10 +140,12 @@ function skyblock.spawn_player(player)
 	if spawn == nil then
 		spawn = skyblock.get_next_spawn()
 		skyblock.set_spawn(player_name,spawn)
+		-- add the start block island
+		minetest.after(3.0, function()
+			skyblock.make_spawn_blocks(spawn,player_name)
+		end)
 	end
-	
-	-- add the start block and teleport the player
-	skyblock.make_spawn_blocks(spawn,player_name)
+	-- teleport player
 	player:setpos({x=spawn.x,y=spawn.y+6,z=spawn.z})
 	player:set_hp(20)
 end
