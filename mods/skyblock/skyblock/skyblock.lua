@@ -141,9 +141,11 @@ function skyblock.spawn_player(player)
 		spawn = skyblock.get_next_spawn()
 		skyblock.set_spawn(player_name,spawn)
 	end
-	
-	-- add the start block and teleport the player
-	skyblock.make_spawn_blocks(spawn,player_name)
+	-- generate player island only for level 1
+	if skyblock.feats.get_level(player_name) == 1 then
+		skyblock.make_spawn_blocks(spawn,player_name)
+	end
+	-- teleport player
 	player:setpos({x=spawn.x,y=spawn.y+6,z=spawn.z})
 	player:set_hp(20)
 end
